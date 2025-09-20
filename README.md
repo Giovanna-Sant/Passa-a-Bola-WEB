@@ -1,7 +1,3 @@
-# Passa-a-Bola_Plataforma
-FIAP 2025 - Challenge Passa a Bola
-
-
 # 📌 Plataforma Passa a Bola  
 
 A **Plataforma Passa a Bola** foi desenvolvida com o objetivo de oferecer um espaço digital voltado para jogadoras de futebol feminino, permitindo **gestão de perfil, acompanhamento de jogos, calendário de eventos e oportunidades de destaque profissional**.  
