@@ -29,6 +29,7 @@ import Notificacao from "./pages/notificacao/Notificacao";
 import Configuracao from "./pages/configuracao/Configuracao";
 import Loja from "./pages/loja/Loja";
 import Produto from "./pages/produto/Produto";
+import Formulario from "./pages/jogadora/formulario/formulario";
 
 // iniciar a pagina sempre no topo
 function ScrollToTop() {
@@ -103,6 +104,8 @@ function App() {
             />
           }
         />
+
+        {/* rotas gerais */}
         <Route path="/cadastrocomum" element={<CadastroComum />} />
         <Route path="/cadastroinicio" element={<CadastroInicio />} />
         <Route path="/cadastrojogadora" element={<CadastroJogadora />} />
@@ -117,20 +120,19 @@ function App() {
         <Route path="/loja" element={<Loja />} />
         <Route path="/produto/:id" element={<Produto />} />
 
-
-        {/* rota notificações acessível para qualquer usuário logado */}
-        <Route 
-          path="/notificacao" 
+        {/* ACESSOS EXCLUSIVOS DE JOGADORA */}
+        <Route
+          path="/formulario"
           element={
-            <PrivateRoute tipoUsuario={tipoUsuario} permitidoPara={["comum", "jogadora"]}>
-              <Notificacao
+            <PrivateRoute tipoUsuario={tipoUsuario} permitidoPara={["jogadora"]}>
+              <Formulario
                 setLogado={setLogado}
                 setTipoUsuario={setTipoUsuario}
               />
             </PrivateRoute>
           }
         />
-
+        
         {/* perfil jogadora */}
         <Route
           path="/perfil"
@@ -144,6 +146,7 @@ function App() {
           }
         />
 
+        {/* ACESSOS EXCLUSIVOS DE USUÁRIO COMUM */}
         {/* perfil comum */}
         <Route
           path="/perfil-comum"
@@ -156,21 +159,36 @@ function App() {
             </PrivateRoute>
           }
         />
-      {/* Configuração acessível para qualquer usuário logado */}
-      <Route
-        path="/configuracao"
-        element={
-          <PrivateRoute tipoUsuario={tipoUsuario} permitidoPara={["comum", "jogadora"]}>
-            <Configuracao
-             setLogado={setLogado}
-             setTipoUsuario={setTipoUsuario}
-             tipoUsuario={tipoUsuario} 
-            />
-    </PrivateRoute>
-  }
-/>
+
+        {/* ACESSO DE QUALQUER USUARIO DESDE QUE ESTEJA LOGADO */}
+        {/* Configuração acessível para logado */}
+        <Route
+          path="/configuracao"
+          element={
+            <PrivateRoute tipoUsuario={tipoUsuario} permitidoPara={["comum", "jogadora"]}>
+              <Configuracao
+                setLogado={setLogado}
+                setTipoUsuario={setTipoUsuario}
+                tipoUsuario={tipoUsuario}
+              />
+            </PrivateRoute>
+          }
+        />
+
+        {/* rota notificações acessível para logado */}
+        <Route
+          path="/notificacao"
+          element={
+            <PrivateRoute tipoUsuario={tipoUsuario} permitidoPara={["comum", "jogadora"]}>
+              <Notificacao
+                setLogado={setLogado}
+                setTipoUsuario={setTipoUsuario}
+              />
+            </PrivateRoute>
+          }
+        />
       </Routes>
-        <TypebotButton />
+      <TypebotButton />
       <Footer />
     </Router>
   );

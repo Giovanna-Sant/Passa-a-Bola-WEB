@@ -34,7 +34,7 @@
 :root{
   --cor-0: #F9F9F9;
   --cor-1: #E5E5E5;
-  --cor-2: #D9D9D9;
+  --cor-2: #d8d8d8;
   --cor-3: #010101;
   --cor-4: #BA2621;
   --cor-5: #ec7696;
@@ -58,7 +58,7 @@
 }
 
 .cinza-claro-bg {
-  background-color: var(--cor-1);
+  background-color: var(--cor-2);
   color: var(--cor-3);
 }
 
@@ -102,6 +102,7 @@
 .verde-claro {
   color: var(--cor-7);
 }
+
 .verde-claro-bg {
   background-color: var(--cor-7);
 }
